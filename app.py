@@ -61,6 +61,10 @@ def health():
     # respuesta mínima y rápida
     return {"ok": True}
 
+@app.get("/")
+def home():
+    return render_template("tabla_posiciones.html")
+
 
 
 
