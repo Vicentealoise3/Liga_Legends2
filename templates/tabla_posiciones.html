@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Tabla de posiciones – Liga Legends{% endblock %}
+
+{% block content %}
+<h2 style="margin:0 0 12px 0;">Tabla de posiciones</h2>
+<div style="overflow:auto">
+  <table id="tabla" style="width:100%;border-collapse:collapse">
+    <thead>
+      <tr style="background:#101a3b">
+        <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(255,255,255,.08)">#</th>
+        <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(255,255,255,.08)">Equipo</th>
+        <th style="text-align:right;padding:10px;border-bottom:1px solid rgba(255,255,255,.08)">G</th>
+        <th style="text-align:right;padding:10px;border-bottom:1px solid rgba(255,255,255,.08)">P</th>
+        <th style="text-align:right;padding:10px;border-bottom:1px solid rgba(255,255,255,.08)">JJ</th>
+        <th style="text-align:right;padding:10px;border-bottom:1px solid rgba(255,255,255,.08)">J prog.</th>
+        <th style="text-align:right;padding:10px;border-bottom:1px solid rgba(255,255,255,.08)">Por jugar</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      <!-- Se llena con JS tras consultar la API -->
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Ejemplo de carga de datos; el loader aparece automáticamente
+  async function cargarTabla(){
+    try{
+      const r = await fetch("/api/standings"); // tu endpoint real
+      if(!r.ok) throw new Error("Error " + r.status);
+      const data = await r.json();
+
+      // data = [{team, wins, losses, games_played, games_scheduled, remaining}, ...]
+      const t = document.getElementById("tbody");
+      t.innerHTML = "";
+      data.forEach((row, i) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td style="padding:10px;border-bottom:1px solid rgba(255,255,255,.08)">${i+1}</td>
+          <td style="padding:10px;border-bottom:1px solid rgba(255,255,255,.08)">${row.team}</td>
+          <td style="padding:10px;text-align:right;border-bottom:1px solid rgba(255,255,255,.08)">${row.wins}</td>
+          <td style="padding:10px;text-align:right;border-bottom:1px solid rgba(255,255,255,.08)">${row.losses}</td>
+          <td style="padding:10px;text-align:right;border-bottom:1px solid rgba(255,255,255,.08)">${row.games_played}</td>
+          <td style="padding:10px;text-align:right;border-bottom:1px solid rgba(255,255,255,.08)">${row.games_scheduled}</td>
+          <td style="padding:10px;text-align:right;border-bottom:1px solid rgba(255,255,255,.08)">${row.remaining}</td>
+        `;
+        t.appendChild(tr);
+      });
+    } catch(e){
+      console.error(e);
+      alert("No se pudo cargar la tabla.");
+    }
+  }
+  document.addEventListener("DOMContentLoaded", cargarTabla);
+</script>
+{% endblock %}

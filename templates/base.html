@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Liga Legends – MLB The Show 25{% endblock %}</title>
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root{
+      --mlb-navy:#0a1d44; --mlb-red:#c0142f; --mlb-blue:#1a3a74;
+      --mlb-white:#ffffff; --mlb-gold:#d4af37; --bg:#070f22;
+      --muted:#a9b5d9; --card-border: rgba(255,255,255,.08);
+    }
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;background:linear-gradient(#070f22,#0a1430);color:#eaf0ff}
+
+    /* --- Overlay de carga global --- */
+    .loader-overlay{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+      background:rgba(7,15,34,.78); backdrop-filter: blur(2px); z-index:9999; color:#fff;
+      font-family:inherit;
+    }
+    .loader-card{
+      width:min(92vw,360px); border-radius:16px; padding:20px; text-align:center;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.12); box-shadow:0 10px 30px rgba(0,0,0,.3);
+    }
+    .spinner{
+      width:48px; height:48px; margin:0 auto 12px; border-radius:50%;
+      border:4px solid rgba(255,255,255,.2); border-top-color:#0ea5e9; animation:spin 1s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .progress-wrap{margin-top:10px}
+    .progress-bar{
+      width:100%; height:8px; border-radius:999px; background:rgba(255,255,255,.12); overflow:hidden;
+    }
+    .progress-fill{
+      height:100%; width:0%; background:#0ea5e9; transition:width .25s ease; border-radius:999px;
+    }
+    .loader-tip{opacity:.95; font-size:.95rem; margin-top:6px}
+    .loader-sub{opacity:.75; font-size:.82rem; margin-top:6px}
+
+    /* Contenedor principal */
+    .container{max-width:1100px;margin:0 auto;padding:16px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:10px 0 18px}
+    .brand{font-weight:800;letter-spacing:.4px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--card-border); border-radius:16px; padding:16px;
+    }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">⚾ Liga Legends</div>
+      <nav>{% block nav %}{% endblock %}</nav>
+    </header>
+    <main class="card">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <!-- Overlay de carga global -->
+  <div id="global-loader" class="loader-overlay" aria-live="polite" aria-busy="true">
+    <div class="loader-card" role="dialog" aria-label="Cargando">
+      <div class="spinner" role="img" aria-label="Cargando"></div>
+      <div class="loader-tip">Consultando la API…</div>
+      <div class="loader-sub">La primera carga puede tardar unos segundos (hora mostrada es <b>Chile</b>).</div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div id="global-progress" class="progress-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script: intercepta TODAS las llamadas fetch/XMLHttpRequest para mostrar el loader -->
+  <script>
+    (function(){
+      const overlay = document.getElementById('global-loader');
+      const bar = document.getElementById('global-progress');
+
+      let active = 0;          // número de requests activos
+      let fakeProgress = 0;    // % visual mientras esperamos
+      let timer = null;
+
+      function show(){
+        if (!overlay) return;
+        overlay.style.display = 'flex';
+        startFake();
+      }
+      function hide(){
+        if (!overlay) return;
+        stopFake(true);
+        overlay.style.display = 'none';
+      }
+      function startFake(){
+        stopFake();
+        fakeProgress = 8;
+        updateBar();
+        timer = setInterval(() => {
+          const step = fakeProgress < 50 ? 5 : (fakeProgress < 80 ? 3 : 1);
+          fakeProgress = Math.min(90, fakeProgress + step);
+          updateBar();
+        }, 300);
+      }
+      function stopFake(finish){
+        if (timer){ clearInterval(timer); timer = null; }
+        if (finish){
+          fakeProgress = 100;
+          updateBar();
+          setTimeout(() => { if(bar) bar.style.width = '0%'; }, 150);
+        } else {
+          fakeProgress = 0;
+          if(bar) bar.style.width = '0%';
+        }
+      }
+      function updateBar(){ if(bar) bar.style.width = fakeProgress + '%'; }
+
+      // Parche global para fetch
+      const _fetch = window.fetch;
+      window.fetch = async function(...args){
+        try{
+          active++;
+          if (active === 1) show();
+          const resp = await _fetch.apply(this, args);
+          return resp;
+        } catch (e){
+          throw e;
+        } finally {
+          active = Math.max(0, active - 1);
+          if (active === 0) hide();
+        }
+      };
+
+      // Cobertura para XMLHttpRequest (por si alguna librería lo usa)
+      (function(){
+        const OldXHR = window.XMLHttpRequest;
+        function NewXHR(){
+          const real = new OldXHR();
+          real.addEventListener('loadstart', () => { active++; if (active === 1) show(); });
+          real.addEventListener('loadend',   () => { active = Math.max(0, active - 1); if (active === 0) hide(); });
+          return real;
+        }
+        window.XMLHttpRequest = NewXHR;
+      })();
+    })();
+  </script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
