@@ -15,6 +15,20 @@
       "detail": []
     },
     {
+      "user": "ALEXCONDE01",
+      "team": "Cubs",
+      "scheduled": 13,
+      "played": 9,
+      "wins": 8,
+      "losses": 1,
+      "remaining": 4,
+      "points": 26,
+      "points_base": 26,
+      "points_extra": 0,
+      "points_reason": "",
+      "detail": []
+    },
+    {
       "user": "MVP140605",
       "team": "Blue Jays",
       "scheduled": 13,
@@ -43,17 +57,17 @@
       "detail": []
     },
     {
-      "user": "ALEXCONDE01",
-      "team": "Cubs",
+      "user": "YosoyReynoso_",
+      "team": "Padres",
       "scheduled": 13,
-      "played": 7,
-      "wins": 6,
-      "losses": 1,
-      "remaining": 6,
-      "points": 20,
-      "points_base": 20,
-      "points_extra": 0,
-      "points_reason": "",
+      "played": 8,
+      "wins": 3,
+      "losses": 5,
+      "remaining": 5,
+      "points": 18,
+      "points_base": 19,
+      "points_extra": -1,
+      "points_reason": "Desconexión vs Blue Jays",
       "detail": []
     },
     {
@@ -82,20 +96,6 @@
       "points_base": 16,
       "points_extra": 0,
       "points_reason": "",
-      "detail": []
-    },
-    {
-      "user": "YosoyReynoso_",
-      "team": "Padres",
-      "scheduled": 13,
-      "played": 7,
-      "wins": 3,
-      "losses": 4,
-      "remaining": 6,
-      "points": 16,
-      "points_base": 17,
-      "points_extra": -1,
-      "points_reason": "Desconexión vs Blue Jays",
       "detail": []
     },
     {
@@ -141,22 +141,22 @@
       "detail": []
     },
     {
-      "user": "Bititi2024",
-      "team": "Diamondbacks",
+      "user": "vicentealoise",
+      "team": "Mets",
       "scheduled": 13,
-      "played": 3,
+      "played": 4,
       "wins": 1,
-      "losses": 2,
-      "remaining": 10,
-      "points": 7,
-      "points_base": 7,
+      "losses": 3,
+      "remaining": 9,
+      "points": 9,
+      "points_base": 9,
       "points_extra": 0,
       "points_reason": "",
       "detail": []
     },
     {
-      "user": "vicentealoise",
-      "team": "Mets",
+      "user": "Bititi2024",
+      "team": "Diamondbacks",
       "scheduled": 13,
       "played": 3,
       "wins": 1,
