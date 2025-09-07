@@ -32,12 +32,12 @@
       "user": "MVP140605",
       "team": "Blue Jays",
       "scheduled": 13,
-      "played": 9,
+      "played": 10,
       "wins": 4,
-      "losses": 5,
-      "remaining": 4,
-      "points": 22,
-      "points_base": 22,
+      "losses": 6,
+      "remaining": 3,
+      "points": 24,
+      "points_base": 24,
       "points_extra": 0,
       "points_reason": "",
       "detail": []
@@ -57,6 +57,34 @@
       "detail": []
     },
     {
+      "user": "Junior192415",
+      "team": "Dodgers",
+      "scheduled": 13,
+      "played": 7,
+      "wins": 6,
+      "losses": 1,
+      "remaining": 6,
+      "points": 20,
+      "points_base": 20,
+      "points_extra": 0,
+      "points_reason": "",
+      "detail": []
+    },
+    {
+      "user": "Joshuan_c95",
+      "team": "Mariners",
+      "scheduled": 13,
+      "played": 8,
+      "wins": 4,
+      "losses": 4,
+      "remaining": 5,
+      "points": 20,
+      "points_base": 20,
+      "points_extra": 0,
+      "points_reason": "",
+      "detail": []
+    },
+    {
       "user": "YosoyReynoso_",
       "team": "Padres",
       "scheduled": 13,
@@ -68,34 +96,6 @@
       "points_base": 19,
       "points_extra": -1,
       "points_reason": "Desconexión vs Blue Jays",
-      "detail": []
-    },
-    {
-      "user": "Junior192415",
-      "team": "Dodgers",
-      "scheduled": 13,
-      "played": 6,
-      "wins": 5,
-      "losses": 1,
-      "remaining": 7,
-      "points": 17,
-      "points_base": 17,
-      "points_extra": 0,
-      "points_reason": "",
-      "detail": []
-    },
-    {
-      "user": "Joshuan_c95",
-      "team": "Mariners",
-      "scheduled": 13,
-      "played": 6,
-      "wins": 4,
-      "losses": 2,
-      "remaining": 7,
-      "points": 16,
-      "points_base": 16,
-      "points_extra": 0,
-      "points_reason": "",
       "detail": []
     },
     {
@@ -144,12 +144,26 @@
       "user": "vicentealoise",
       "team": "Mets",
       "scheduled": 13,
-      "played": 4,
-      "wins": 1,
+      "played": 5,
+      "wins": 2,
       "losses": 3,
+      "remaining": 8,
+      "points": 12,
+      "points_base": 12,
+      "points_extra": 0,
+      "points_reason": "",
+      "detail": []
+    },
+    {
+      "user": "edwar13-21",
+      "team": "Yankees",
+      "scheduled": 13,
+      "played": 4,
+      "wins": 2,
+      "losses": 2,
       "remaining": 9,
-      "points": 9,
-      "points_base": 9,
+      "points": 10,
+      "points_base": 10,
       "points_extra": 0,
       "points_reason": "",
       "detail": []
@@ -167,21 +181,10 @@
       "points_extra": 0,
       "points_reason": "",
       "detail": []
-    },
-    {
-      "user": "edwar13-21",
-      "team": "Yankees",
-      "scheduled": 13,
-      "played": 3,
-      "wins": 1,
-      "losses": 2,
-      "remaining": 10,
-      "points": 7,
-      "points_base": 7,
-      "points_extra": 0,
-      "points_reason": "",
-      "detail": []
     }
   ],
-  "games_today": []
+  "games_today": [
+    "Yankees 2 - Mariners 0  - 07-09-2025 - 11:47 am (hora Chile)",
+    "Mets 3 - Mariners 0  - 07-09-2025 - 6:30 pm (hora Chile)"
+  ]
 }
