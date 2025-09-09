@@ -99,6 +99,34 @@
       "detail": []
     },
     {
+      "user": "edwar13-21",
+      "team": "Yankees",
+      "scheduled": 13,
+      "played": 6,
+      "wins": 4,
+      "losses": 2,
+      "remaining": 7,
+      "points": 16,
+      "points_base": 16,
+      "points_extra": 0,
+      "points_reason": "",
+      "detail": []
+    },
+    {
+      "user": "vicentealoise",
+      "team": "Mets",
+      "scheduled": 13,
+      "played": 7,
+      "wins": 2,
+      "losses": 5,
+      "remaining": 6,
+      "points": 16,
+      "points_base": 16,
+      "points_extra": 0,
+      "points_reason": "",
+      "detail": []
+    },
+    {
       "user": "LuisMiguelRD451",
       "team": "Phillies",
       "scheduled": 13,
@@ -141,34 +169,6 @@
       "detail": []
     },
     {
-      "user": "vicentealoise",
-      "team": "Mets",
-      "scheduled": 13,
-      "played": 5,
-      "wins": 2,
-      "losses": 3,
-      "remaining": 8,
-      "points": 12,
-      "points_base": 12,
-      "points_extra": 0,
-      "points_reason": "",
-      "detail": []
-    },
-    {
-      "user": "edwar13-21",
-      "team": "Yankees",
-      "scheduled": 13,
-      "played": 4,
-      "wins": 2,
-      "losses": 2,
-      "remaining": 9,
-      "points": 10,
-      "points_base": 10,
-      "points_extra": 0,
-      "points_reason": "",
-      "detail": []
-    },
-    {
       "user": "Bititi2024",
       "team": "Diamondbacks",
       "scheduled": 13,
@@ -184,7 +184,7 @@
     }
   ],
   "games_today": [
-    "Yankees 2 - Mariners 0  - 07-09-2025 - 11:47 am (hora Chile)",
-    "Mets 3 - Mariners 0  - 07-09-2025 - 6:30 pm (hora Chile)"
+    "Yankees 1 - Mets 0  - 08-09-2025 - 9:11 pm (hora Chile)",
+    "Yankees 0 - Mets 0  - 08-09-2025 - 9:40 pm (hora Chile)"
   ]
 }
